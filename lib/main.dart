@@ -7,18 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'Username Genarator',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome to Flutter I guess'),
-        ),
-        body: Center(
-          child: RandomUsername(),
-        ),
-      ),
+      home: RandomUsername(),
     );
   }
 }
@@ -29,7 +22,7 @@ class RandomUsernameState extends State<RandomUsername> {
     final _suggestions = <WordPair>[];
     final _biggerFont = const TextStyle(fontSize: 18.0, fontFamily: "arial");
 
-    Widget buildSuggestions() {
+    Widget _buildSuggestions() {
       return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
@@ -55,7 +48,16 @@ class RandomUsernameState extends State<RandomUsername> {
       );
     }
 
-   
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Username Generator'),
+        ),
+        body: _buildSuggestions(),
+      );
+    }
+
   }
 }
 
