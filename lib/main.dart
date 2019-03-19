@@ -13,9 +13,22 @@ class MyApp extends StatelessWidget {
           title: Text('Welcome to Flutter I guess'),
         ),
         body: Center(
-          child: Text('Hello World Ken'),
+          child: RandomUsername(),
         ),
       ),
     );
   }
+}
+
+class RandomUsernameState extends State<RandomUsername> {
+  @override
+  Widget build(BuildContext context) {
+    final usernamePair = WordPair.random();
+    return Text(usernamePair.asPascalCase);
+  }
+}
+
+class RandomUsername extends StatefulWidget {
+  @override
+  RandomUsernameState createState() => new RandomUsernameState();
 }
