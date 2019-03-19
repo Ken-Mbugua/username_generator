@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
-      theme:ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
       home: Scaffold(
@@ -27,17 +27,17 @@ class RandomUsernameState extends State<RandomUsername> {
   @override
   Widget build(BuildContext context) {
     final _suggestions = <WordPair>[];
-    final _biggerFont =const TextStyle(fontSize: 18.0, fontFamily: "arial");
+    final _biggerFont = const TextStyle(fontSize: 18.0, fontFamily: "arial");
 
     Widget buildSuggestions() {
       return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
-          if(i.isOdd) return Divider();
+          if (i.isOdd) return Divider();
 
           final index = i ~/ 2;
-          
-          if(index >=_suggestions.length) {
+
+          if (index >= _suggestions.length) {
             _suggestions.addAll(generateWordPairs().take(10));
           }
 
@@ -46,10 +46,16 @@ class RandomUsernameState extends State<RandomUsername> {
       );
     }
 
-    
+    Widget _buildRow(WordPair pair) {
+      return ListTile(
+        title: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+      );
+    }
 
-    final usernamePair = WordPair.random();
-    return Text(usernamePair.asPascalCase);
+   
   }
 }
 
