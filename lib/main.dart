@@ -17,10 +17,19 @@ class MyApp extends StatelessWidget {
 }
 
 class RandomUsernameState extends State<RandomUsername> {
+
+  final _suggestions = <WordPair>[];
+  final _biggerFont = const TextStyle(fontSize: 18.0, fontFamily: "arial");
+
   @override
-  Widget build(BuildContext context) {
-    final _suggestions = <WordPair>[];
-    final _biggerFont = const TextStyle(fontSize: 18.0, fontFamily: "arial");
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Username Generator'),
+        ),
+        body: _buildSuggestions(),
+      );
+    }
 
     Widget _buildSuggestions() {
       return ListView.builder(
@@ -47,18 +56,6 @@ class RandomUsernameState extends State<RandomUsername> {
         ),
       );
     }
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Username Generator'),
-        ),
-        body: _buildSuggestions(),
-      );
-    }
-
-  }
 }
 
 class RandomUsername extends StatefulWidget {
